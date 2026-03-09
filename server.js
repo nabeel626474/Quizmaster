@@ -11,5 +11,5 @@ app.get('/{*path}', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`SmartQuizHub server running on http://0.0.0.0:${PORT}`);
+    console.log(`Smart Quiz Hub server running on http://0.0.0.0:${PORT}`);
 });
