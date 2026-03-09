@@ -1,14 +1,11 @@
 (function () {
-  var injected = false;
+  var headerDone = false;
+  var footerDone = false;
 
-  function injectLogo() {
-    if (injected) return;
-    var header = document.querySelector('header');
-    if (!header) return;
-    var logoBox = header.querySelector('.w-8.h-8');
-    if (!logoBox) return;
-
-    injected = true;
+  function injectLogoInto(container, label) {
+    if (!container) return false;
+    var logoBox = container.querySelector('.w-8.h-8');
+    if (!logoBox) return false;
 
     logoBox.innerHTML = '';
     logoBox.style.background = 'none';
@@ -21,13 +18,20 @@
     img.style.borderRadius = '9px';
     img.style.display = 'block';
     logoBox.appendChild(img);
+    return true;
   }
 
   function tryInject() {
-    if (injected) return;
-    injectLogo();
-    if (!injected) {
-      setTimeout(tryInject, 200);
+    if (!headerDone) {
+      var header = document.querySelector('header');
+      if (header) headerDone = injectLogoInto(header, 'header');
+    }
+    if (!footerDone) {
+      var footer = document.querySelector('footer');
+      if (footer) footerDone = injectLogoInto(footer, 'footer');
+    }
+    if (!headerDone || !footerDone) {
+      setTimeout(tryInject, 300);
     }
   }
 
