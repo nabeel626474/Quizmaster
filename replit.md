@@ -1,14 +1,16 @@
-# QuizMaster
+# SmartQuizHub
 
 ## Project Overview
-A static quiz web application — pre-built Next.js export serving static HTML/CSS/JS files. Users can take quizzes, earn coins, and test their knowledge across 15 categories.
+A static quiz web application — pre-built Next.js export served via a Node.js Express server. Users can take quizzes, earn coins, and test their knowledge across 15 categories.
 
 ## Architecture
-- **Type**: Static site (pre-built Next.js export)
-- **No build step required** — all files are already compiled
-- **Server**: `npx serve . -l 5000` serves the static files
+- **Type**: Static site (pre-built Next.js export) served with Node.js/Express
+- **Server**: `server.js` — Express static file server on port 5000
+- **No build step required** — all HTML/CSS/JS files are already compiled
 
 ## Project Structure
+- `server.js` — Express server entry point
+- `package.json` — Node.js project config with `npm start` script
 - `index.html` — main entry point
 - `_next/` — Next.js compiled static assets (chunks, CSS, fonts)
 - `quiz/1.html` through `quiz/15.html` — individual quiz pages
@@ -16,8 +18,8 @@ A static quiz web application — pre-built Next.js export serving static HTML/C
 - `favicon.ico` — site icon
 
 ## Workflow
-- **Start application**: `npx serve . -l 5000` on port 5000 (webview)
+- **Start application**: `node server.js` on port 5000 (webview)
 
 ## Deployment
-- **Target**: Static
-- **Public directory**: `.` (project root)
+- **Target**: Autoscale
+- **Run command**: `node server.js`
