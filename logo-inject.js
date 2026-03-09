@@ -2,10 +2,11 @@
   var headerDone = false;
   var footerDone = false;
 
-  function injectLogoInto(container, label) {
+  function injectLogoInto(container) {
     if (!container) return false;
     var logoBox = container.querySelector('.w-8.h-8');
     if (!logoBox) return false;
+    if (logoBox.querySelector('img')) return true;
 
     logoBox.innerHTML = '';
     logoBox.style.background = 'none';
@@ -23,21 +24,15 @@
 
   function tryInject() {
     if (!headerDone) {
-      var header = document.querySelector('header');
-      if (header) headerDone = injectLogoInto(header, 'header');
+      headerDone = injectLogoInto(document.querySelector('header'));
     }
     if (!footerDone) {
-      var footer = document.querySelector('footer');
-      if (footer) footerDone = injectLogoInto(footer, 'footer');
+      footerDone = injectLogoInto(document.querySelector('footer'));
     }
     if (!headerDone || !footerDone) {
-      setTimeout(tryInject, 300);
+      setTimeout(tryInject, 400);
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', tryInject);
-  } else {
-    tryInject();
-  }
+  setTimeout(tryInject, 800);
 })();
