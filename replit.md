@@ -15,7 +15,9 @@ A static quiz web application — pre-built Next.js export served via a Node.js 
 - `_next/` — Next.js compiled static assets (chunks, CSS, fonts)
 - `quiz/1.html` through `quiz/15.html` — individual quiz pages
 - `about.html`, `contact.html`, `wallet.html`, `privacy.html`, `terms.html`, `disclaimer.html` — static pages
-- `favicon.ico` — site icon
+- `logo.svg` — custom Smart Quiz Hub logo (blue-to-purple gradient with magnifying glass Q)
+- `logo-inject.js` — client-side script that replaces the header logo with the custom SVG
+- `favicon.ico` — original favicon (replaced by logo.svg via HTML link tags)
 
 ## Workflow
 - **Start application**: `node server.js` on port 5000 (webview)
